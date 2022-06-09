@@ -77,6 +77,18 @@
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StatusColumn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\StatusColumn.Designer.cs">
+      <DependentUpon>StatusColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TaskCard.Designer.cs">
+      <DependentUpon>TaskCard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +105,12 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\StatusColumn.resx">
+      <DependentUpon>StatusColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaskCard.resx">
+      <DependentUpon>TaskCard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,7 +121,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Пояснительная записка к дипломному проекту.docx" />
+    <None Include="Resources\Диплом Кулаков ver 3.docx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -116,7 +134,7 @@
     <Content Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\script.sql" />
+    <Content Include="Resources\sql.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

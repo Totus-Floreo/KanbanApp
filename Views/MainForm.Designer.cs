@@ -34,6 +34,7 @@
             this.kanbanCombo = new System.Windows.Forms.ComboBox();
             this.labelHello = new System.Windows.Forms.Label();
             this.logoBox = new System.Windows.Forms.PictureBox();
+            this.flowKanbanPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             this.kanbanCombo.Name = "kanbanCombo";
             this.kanbanCombo.Size = new System.Drawing.Size(215, 33);
             this.kanbanCombo.TabIndex = 2;
+            this.kanbanCombo.SelectedIndexChanged += new System.EventHandler(this.kanbanCombo_SelectedIndexChanged);
             // 
             // labelHello
             // 
@@ -86,10 +88,20 @@
             this.logoBox.TabIndex = 1;
             this.logoBox.TabStop = false;
             // 
+            // flowKanbanPanel
+            // 
+            this.flowKanbanPanel.AutoScroll = true;
+            this.flowKanbanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowKanbanPanel.Location = new System.Drawing.Point(0, 76);
+            this.flowKanbanPanel.Name = "flowKanbanPanel";
+            this.flowKanbanPanel.Size = new System.Drawing.Size(984, 485);
+            this.flowKanbanPanel.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.flowKanbanPanel);
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Label labelHello;
         private System.Windows.Forms.ComboBox kanbanCombo;
         private System.Windows.Forms.Label sublabelKanban;
+        private System.Windows.Forms.FlowLayoutPanel flowKanbanPanel;
     }
 }

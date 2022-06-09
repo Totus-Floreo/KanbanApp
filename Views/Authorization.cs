@@ -37,7 +37,7 @@ namespace KanbanApp
                     MainForm main = new MainForm(user);
                     main.ShowDialog();
 
-                    this.ShowDialog();
+                    ShowDialog();
                 }
             }
             else
