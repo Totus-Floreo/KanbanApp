@@ -65,11 +65,10 @@
             // 
             // labeltask
             // 
-            this.labeltask.AutoSize = true;
             this.labeltask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labeltask.Location = new System.Drawing.Point(0, 25);
             this.labeltask.Name = "labeltask";
-            this.labeltask.Size = new System.Drawing.Size(142, 25);
+            this.labeltask.Size = new System.Drawing.Size(143, 93);
             this.labeltask.TabIndex = 3;
             this.labeltask.Text = "create program";
             // 

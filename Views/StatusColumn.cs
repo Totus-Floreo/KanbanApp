@@ -45,7 +45,14 @@ namespace KanbanApp.Views
                 TaskCard card = new TaskCard();
                 card.GenerateTaskCardData(task);
                 flowLayoutPanel.Controls.Add(card);
+                card.MouseDoubleClick += new MouseEventHandler(EditTaskCardData);
             }
+        }
+
+        private void EditTaskCardData(object sender, EventArgs e)
+        {
+            TaskCard card = (TaskCard)sender;
+            MessageBox.Show(card.Task.name);
         }
     }
 }

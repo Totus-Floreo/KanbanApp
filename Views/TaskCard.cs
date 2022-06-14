@@ -12,6 +12,7 @@ namespace KanbanApp.Views
 {
     public partial class TaskCard : UserControl
     {
+        public Model.Task Task { get; private set; }
         public TaskCard()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace KanbanApp.Views
             labeltaskID.Text = "Задача " + Convert.ToString(task.taskID);
             labeltask.Text = task.name;
             labeltool.Text = task.Tool.name;
+            Task = task;
         }
     }
 }
