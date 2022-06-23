@@ -22,6 +22,8 @@ namespace KanbanApp.Model
         [StringLength(50)]
         public string name { get; set; }
 
+        public int ordinal { get; set; }
+
         public virtual Kanban Kanban { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
