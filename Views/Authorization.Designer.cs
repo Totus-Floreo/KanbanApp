@@ -34,8 +34,8 @@
             this.buttonEnter = new System.Windows.Forms.Button();
             this.buttonReg = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.labelAuto = new System.Windows.Forms.Label();
             this.logoBox = new System.Windows.Forms.PictureBox();
+            this.labelAuto = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
@@ -55,6 +55,7 @@
             // 
             this.pwdBox.Location = new System.Drawing.Point(200, 173);
             this.pwdBox.Name = "pwdBox";
+            this.pwdBox.PasswordChar = '*';
             this.pwdBox.Size = new System.Drawing.Size(200, 33);
             this.pwdBox.TabIndex = 1;
             // 
@@ -76,6 +77,7 @@
             this.buttonReg.TabIndex = 3;
             this.buttonReg.Text = "Регистрация";
             this.buttonReg.UseVisualStyleBackColor = true;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // panelTop
             // 
@@ -88,15 +90,6 @@
             this.panelTop.Size = new System.Drawing.Size(584, 85);
             this.panelTop.TabIndex = 4;
             // 
-            // labelAuto
-            // 
-            this.labelAuto.AutoSize = true;
-            this.labelAuto.Location = new System.Drawing.Point(236, 29);
-            this.labelAuto.Name = "labelAuto";
-            this.labelAuto.Size = new System.Drawing.Size(131, 25);
-            this.labelAuto.TabIndex = 0;
-            this.labelAuto.Text = "Авторизация";
-            // 
             // logoBox
             // 
             this.logoBox.Dock = System.Windows.Forms.DockStyle.Left;
@@ -107,6 +100,15 @@
             this.logoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoBox.TabIndex = 1;
             this.logoBox.TabStop = false;
+            // 
+            // labelAuto
+            // 
+            this.labelAuto.AutoSize = true;
+            this.labelAuto.Location = new System.Drawing.Point(236, 29);
+            this.labelAuto.Name = "labelAuto";
+            this.labelAuto.Size = new System.Drawing.Size(131, 25);
+            this.labelAuto.TabIndex = 0;
+            this.labelAuto.Text = "Авторизация";
             // 
             // label2
             // 
@@ -140,6 +142,8 @@
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(600, 400);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "Authorization";
             this.Text = "Авторизация";
             this.panelTop.ResumeLayout(false);

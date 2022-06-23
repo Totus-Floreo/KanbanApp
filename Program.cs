@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KanbanApp.Views;
+using KanbanApp.Model;
 
 namespace KanbanApp
 {
@@ -17,7 +18,7 @@ namespace KanbanApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Authorization());
+            Application.Run(new MainForm());
         }
     }
 }

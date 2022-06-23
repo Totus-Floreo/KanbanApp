@@ -15,7 +15,7 @@ namespace KanbanApp
     public partial class Authorization : Form
     {
         readonly List<User> users = new List<User>(DataBaseContext.database.Users.ToList());
-        User user = null;
+        public User user = null;
 
         public Authorization()
         {
@@ -24,26 +24,41 @@ namespace KanbanApp
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            if(loginBox.Text != null || pwdBox.Text != null)
+            try
             {
-                user = users.FirstOrDefault(u => u.login.Contains(loginBox.Text));
-                if (user == null)
+                if (loginBox.Text != "" && pwdBox.Text != "")
                 {
-                    MessageBox.Show("Такой логин не существует!", "Ошибка логина", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    user = users.Find(u => u.login.Contains(loginBox.Text));
+                    if (user == null)
+                    {
+                        MessageBox.Show("Не верный логин или/и пароль!", "Некорректные данные!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (user.password == pwdBox.Text)
+                        {
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не верный логин или/и пароль!", "Некорректные данные!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                if(user.password.Contains(pwdBox.Text))
+                else
                 {
-                    this.Hide();
-                    MainForm main = new MainForm(user);
-                    main.ShowDialog();
+                    MessageBox.Show("Не оставляйте пустых полей!", "Ошибка незаполненные данные!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка системы!", "Ошибка " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }        
+        }
 
-                    ShowDialog();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Не оставляйте пустых значений!", "Ошибка логина или пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

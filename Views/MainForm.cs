@@ -17,19 +17,29 @@ namespace KanbanApp.Views
         List<Status> allStatuses = new List<Status>(DataBaseContext.database.Status.ToList());
         List<Status> needStatuses = new List<Status>();
         Kanban selectedKanban = new Kanban();
-        public User user = null;
-        public MainForm(User login)
+        public User user;
+        public MainForm()
         {
             InitializeComponent();
-            user = login;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            kanbanCombo.DataSource = user.Kanbans.Select(k => k.name).ToList();
-            kanbanCombo.SelectedIndex = 0;
-            labelHello.Text = "Добрый день, " + user.fullname + "!";
-            UpdateData();
+            this.Hide();
+            Authorization authorization = new Authorization();
+            authorization.ShowDialog();
+            user = authorization.user;
+            if(authorization.DialogResult != DialogResult.OK)
+            {
+                Application.Exit();
+            }   
+            else
+            {
+                kanbanCombo.DataSource = user.Kanbans.Select(k => k.name).ToList();
+                kanbanCombo.SelectedIndex = 0;
+                labelHello.Text = "Добрый день, " + user.fullname + "!";
+                UpdateData();
+            } 
         }
 
         public void UpdateData()
