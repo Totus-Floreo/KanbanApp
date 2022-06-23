@@ -58,7 +58,6 @@
     <Compile Include="Model\Kanban.cs" />
     <Compile Include="Model\ModelDB.cs" />
     <Compile Include="Model\Status.cs" />
-    <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\Tool.cs" />
     <Compile Include="Model\User.cs" />
@@ -130,7 +129,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Диплом Кулаков ver 3.docx" />
     <None Include="Resources\Диплом финал.docx" />
     <None Include="Resources\Диплом финал.pdf" />
     <None Include="Resources\Презентация.pptx" />
@@ -152,7 +150,6 @@
     <Content Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\sql.sql" />
     <Content Include="Resources\status.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
