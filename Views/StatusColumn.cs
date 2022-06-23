@@ -15,7 +15,7 @@ namespace KanbanApp.Views
 {
     public partial class StatusColumn : UserControl
     {
-        private List<Task> allTasks = new List<Task>(DataBaseContext.database.Tasks);
+        private List<Task> allTasks = new List<Task>(DataBaseContext.Database.Tasks);
         private List<Task> needTask = new List<Task>();
         public StatusColumn()
         {

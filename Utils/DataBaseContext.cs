@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KanbanApp.Model;
+﻿using KanbanApp.Model;
+using System;
+using System.Windows.Forms;
 
 namespace KanbanApp
 {
-    internal class DataBaseContext
+    internal static class DataBaseContext
     {
-        public static ModelDB database = new ModelDB();
+        public static ModelDB Database = new ModelDB();
+
+        public static void SaveDatabase()
+        {
+            try
+            {
+                Database.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка " + ex.Message, "Ошибка системы!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

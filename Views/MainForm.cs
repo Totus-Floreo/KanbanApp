@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using KanbanApp.Model;
 
@@ -13,11 +8,10 @@ namespace KanbanApp.Views
 {
     public partial class MainForm : Form
     {
-        List<Kanban> kanbans = new List<Kanban>(DataBaseContext.database.Kanbans.ToList());
-        List<Status> allStatuses = new List<Status>(DataBaseContext.database.Status.ToList());
-        List<Status> needStatuses = new List<Status>();
+        List<Status> allStatuses = new List<Status>(DataBaseContext.Database.Status.ToList());
         Kanban selectedKanban = new Kanban();
         public User user;
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,37 +22,66 @@ namespace KanbanApp.Views
             this.Hide();
             Authorization authorization = new Authorization();
             authorization.ShowDialog();
-            user = authorization.user;
-            if(authorization.DialogResult != DialogResult.OK)
+            user = authorization.User;
+            if (authorization.DialogResult != DialogResult.OK)
             {
                 Application.Exit();
-            }   
+            }
             else
             {
-                kanbanCombo.DataSource = user.Kanbans.Select(k => k.name).ToList();
-                kanbanCombo.SelectedIndex = 0;
                 labelHello.Text = "Добрый день, " + user.fullname + "!";
+                UpdateComboBox();
                 UpdateData();
             } 
         }
 
         public void UpdateData()
-        {           
-            selectedKanban = kanbans.First(k => k.name.Contains(kanbanCombo.Text));
-            foreach (Status status in allStatuses)
+        {
+            if (kanbanCombo.Enabled == false)
             {
-                if(status.Kanban.name == selectedKanban.name)
-                {
-                    needStatuses.Add(status);
-                }
+                selectedKanban = null;
+                return;
             }
+            
+            selectedKanban = (Kanban)kanbanCombo.SelectedItem;
+
+            if(selectedKanban == null)
+            {
+                return;
+            }
+
+            List<Status> needStatuses = allStatuses.Where(s => s.Kanban == selectedKanban).OrderBy(s => s.ordinal).ThenBy(s => s.name).ToList();
+
             GenerateKanban(needStatuses);
-            needStatuses.Clear();
+        }
+
+        private void UpdateComboBox()
+        {
+            List<Kanban> defaultKanbans = new List<Kanban>()
+            {
+                new Kanban
+                {
+                    name = "Канбаны отсутствуют!"
+                }
+            };
+
+            if (user.Kanbans.Count > 0)
+            {
+                kanbanCombo.Items.Remove(defaultKanbans[0]);
+                kanbanCombo.Enabled = true;
+                kanbanCombo.DataSource = user.Kanbans.ToList();
+            }
+            else
+            {
+                kanbanCombo.Enabled = false;
+                kanbanCombo.DataSource = defaultKanbans;
+            }
         }
 
         public void GenerateKanban(List<Status> statuses)
         {
             flowKanbanPanel.Controls.Clear();
+
             foreach(Status status in statuses)
             {
                 StatusColumn statusColumn = new StatusColumn();
@@ -69,8 +92,92 @@ namespace KanbanApp.Views
 
         private void kanbanCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            flowKanbanPanel.Controls.Clear();
             UpdateData();
+        }
+
+        private void kanbanAdd_Click(object sender, EventArgs e)
+        {
+            FormAddChangeKanban form = new FormAddChangeKanban(user);
+
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                UpdateComboBox();
+                UpdateData();
+            }
+        }
+
+        private void kanbanEdit_Click(object sender, EventArgs e)
+        {
+            if (selectedKanban == null)
+            {
+                return;
+            }
+
+            FormAddChangeKanban form = new FormAddChangeKanban(user, selectedKanban);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                UpdateComboBox();
+                UpdateData();
+            }
+        }
+
+        private void kanbanDelete_Click(object sender, EventArgs e)
+        {
+            if(selectedKanban == null)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show($"Вы действительно хотите удалить канбан {selectedKanban.name}?\n" +
+                $"Это действие невозможно отменить!", "Подтвердите удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(result == DialogResult.Yes)
+            {
+                DataBaseContext.Database.Kanbans.Remove(selectedKanban);
+                DataBaseContext.SaveDatabase();
+                UpdateComboBox();
+                UpdateData();
+            }
+        }
+
+        private void statusAdd_Click(object sender, EventArgs e)
+        {
+            if(selectedKanban == null)
+            {
+                MessageBox.Show("Добавьте канбан!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FormAddChangeStatus form = new FormAddChangeStatus(selectedKanban);
+
+            if (form.ShowDialog() == DialogResult.Yes)
+            {
+                UpdateComboBox();
+                UpdateData();
+            }
+        }
+
+        private void toolAdd_Click(object sender, EventArgs e)
+        {
+            if (selectedKanban == null)
+            {
+                MessageBox.Show("Добавьте канбан!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+        }
+
+        private void TaskAdd_Click(object sender, EventArgs e)
+        {
+            if (selectedKanban == null)
+            {
+                MessageBox.Show("Добавьте канбан!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
         }
     }
 }

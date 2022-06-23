@@ -39,10 +39,10 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 43);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
             this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(300, 557);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(298, 557);
             this.flowLayoutPanel.TabIndex = 0;
             // 
             // statusBox
@@ -61,7 +61,7 @@
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStatus.Location = new System.Drawing.Point(0, 0);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(300, 34);
+            this.panelStatus.Size = new System.Drawing.Size(298, 34);
             this.panelStatus.TabIndex = 2;
             // 
             // buttomDelete
@@ -78,12 +78,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panelStatus);
             this.Controls.Add(this.flowLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "StatusColumn";
-            this.Size = new System.Drawing.Size(300, 600);
+            this.Size = new System.Drawing.Size(298, 598);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttomDelete)).EndInit();
