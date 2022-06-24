@@ -90,6 +90,8 @@
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximumSize = new System.Drawing.Size(415, 148);
+            this.MinimumSize = new System.Drawing.Size(415, 148);
             this.Name = "FormAddChangeKanban";
             this.Text = "НАЗВАНИЕ";
             this.ResumeLayout(false);

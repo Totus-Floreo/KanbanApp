@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using KanbanApp.Model;
-using KanbanApp.Views;
 using Task = KanbanApp.Model.Task;
 
 namespace KanbanApp.Views
@@ -17,17 +10,16 @@ namespace KanbanApp.Views
     {
         private List<Task> allTasks = new List<Task>(DataBaseContext.Database.Tasks);
         private List<Task> needTask = new List<Task>();
-        public StatusColumn()
+        public Status Status { get; private set; }
+        public StatusColumn(Status status)
         {
             InitializeComponent();
-        }
 
-        public void GenerateStatusColumnData(Status status)
-        {
+            this.Status = status;
             statusBox.Text = status.name;
             foreach (Task task in allTasks)
             {
-                if(task.Status.statusID == status.statusID)
+                if (task.Status.statusID == status.statusID)
                 {
                     needTask.Add(task);
                 }
@@ -53,6 +45,28 @@ namespace KanbanApp.Views
         {
             TaskCard card = (TaskCard)sender;
             MessageBox.Show(card.Task.name);
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Вы действительно хотите удалить статус {Status.name}?\n" +
+                $"Это действие невозможно отменить!", "Подтвердите удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                DataBaseContext.Database.Status.Remove(Status);
+                DataBaseContext.SaveDatabase();
+            }
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            FormAddChangeStatus form = new FormAddChangeStatus(Status.Kanban, Status);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                DataBaseContext.SaveDatabase();
+            }
         }
     }
 }

@@ -29,50 +29,65 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.statusBox = new System.Windows.Forms.TextBox();
             this.panelStatus = new System.Windows.Forms.Panel();
-            this.buttomDelete = new System.Windows.Forms.PictureBox();
+            this.buttonChange = new System.Windows.Forms.PictureBox();
+            this.buttonDelete = new System.Windows.Forms.PictureBox();
+            this.statusBox = new System.Windows.Forms.Label();
             this.panelStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttomDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonChange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonDelete)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 32);
             this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(298, 557);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(298, 566);
             this.flowLayoutPanel.TabIndex = 0;
-            // 
-            // statusBox
-            // 
-            this.statusBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusBox.Location = new System.Drawing.Point(0, 0);
-            this.statusBox.Margin = new System.Windows.Forms.Padding(6);
-            this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(263, 33);
-            this.statusBox.TabIndex = 1;
             // 
             // panelStatus
             // 
-            this.panelStatus.Controls.Add(this.buttomDelete);
             this.panelStatus.Controls.Add(this.statusBox);
+            this.panelStatus.Controls.Add(this.buttonChange);
+            this.panelStatus.Controls.Add(this.buttonDelete);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStatus.Location = new System.Drawing.Point(0, 0);
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Size = new System.Drawing.Size(298, 34);
             this.panelStatus.TabIndex = 2;
             // 
-            // buttomDelete
+            // buttonChange
             // 
-            this.buttomDelete.Image = global::KanbanApp.Properties.Resources.cross;
-            this.buttomDelete.Location = new System.Drawing.Point(265, 0);
-            this.buttomDelete.Name = "buttomDelete";
-            this.buttomDelete.Size = new System.Drawing.Size(32, 33);
-            this.buttomDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.buttomDelete.TabIndex = 5;
-            this.buttomDelete.TabStop = false;
+            this.buttonChange.Image = global::KanbanApp.Properties.Resources.change;
+            this.buttonChange.Location = new System.Drawing.Point(234, 1);
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.Size = new System.Drawing.Size(32, 33);
+            this.buttonChange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonChange.TabIndex = 5;
+            this.buttonChange.TabStop = false;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Image = global::KanbanApp.Properties.Resources.cross;
+            this.buttonDelete.Location = new System.Drawing.Point(266, 0);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(32, 33);
+            this.buttonDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonDelete.TabIndex = 5;
+            this.buttonDelete.TabStop = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // statusBox
+            // 
+            this.statusBox.AutoSize = true;
+            this.statusBox.Location = new System.Drawing.Point(3, 4);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(63, 25);
+            this.statusBox.TabIndex = 6;
+            this.statusBox.Text = "label1";
             // 
             // StatusColumn
             // 
@@ -87,7 +102,8 @@
             this.Size = new System.Drawing.Size(298, 598);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttomDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonChange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonDelete)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -95,8 +111,9 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
-        private System.Windows.Forms.TextBox statusBox;
         private System.Windows.Forms.Panel panelStatus;
-        private System.Windows.Forms.PictureBox buttomDelete;
+        private System.Windows.Forms.PictureBox buttonDelete;
+        private System.Windows.Forms.PictureBox buttonChange;
+        private System.Windows.Forms.Label statusBox;
     }
 }

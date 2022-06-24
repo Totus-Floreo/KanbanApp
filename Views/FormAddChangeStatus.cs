@@ -8,11 +8,23 @@ namespace KanbanApp.Views
     public partial class FormAddChangeStatus : Form
     {
         private Kanban _kanban;
+        private Status _status;
 
         public FormAddChangeStatus(Kanban kanban)
         {
             InitializeComponent();
             _kanban = kanban;
+            this.Text = "Добавление статуса";
+        }
+
+        public FormAddChangeStatus(Kanban kanban, Status status)
+        {
+            InitializeComponent();
+            _kanban = kanban;
+            _status = status;
+            nameBox.Text = status.name;
+            orderBox.Text = status.ordinal.ToString();
+            this.Text = "Изменение статуса";
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -22,9 +34,18 @@ namespace KanbanApp.Views
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (_kanban != null && _kanban.name == nameBox.Text)
+            if (_status != null && _status.name == nameBox.Text && _status.ordinal == int.Parse(orderBox.Text))
             {
                 this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+
+            int order;
+            bool orderConverted = int.TryParse(orderBox.Text, out order);
+
+            if (!orderConverted)
+            {
+                MessageBox.Show("Порядковый номер статуса должен содержать только целые числа!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -34,29 +55,56 @@ namespace KanbanApp.Views
                 return;
             }
 
-            if (this.Text == "Добавление канбана")
+            if (StatusOrdinalExists(order))
             {
-                _kanban = new Kanban()
+                MessageBox.Show("Порядковый номер уже присвоен одному из статусов данного канбана!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (this.Text == "Добавление статуса")
+            {
+                _status = new Status()
                 {
-                    name = nameBox.Text
+                    name = nameBox.Text,
+                    ordinal = int.Parse(orderBox.Text),
+                    kanbanID = _kanban.kanbanID
                 };
 
-                DataBaseContext.Database.Kanbans.Add(_kanban);
+                DataBaseContext.Database.Status.Add(_status);
             }
             else
             {
-                _kanban.name = nameBox.Text;
+                _status.name = nameBox.Text;
+                _status.ordinal = order;
             }
 
-            DataBaseContext.SaveDatabase();
             this.DialogResult = DialogResult.OK;
         }
 
         private bool StatusNameExists()
         {
+            if (this.Text == "Добавление статуса")
+            {
+                return DataBaseContext.Database.Status.ToList()
+                .Exists(s =>
+                s.Kanban == _kanban &&
+                s.name == nameBox.Text);
+            }
+            else
+            {
+                return DataBaseContext.Database.Status.Where(s => s.name != nameBox.Text)
+                .ToList()
+                .Exists(s =>
+                s.Kanban == _kanban &&
+                s.name == nameBox.Text);
+            }
+        }
+
+        private bool StatusOrdinalExists(int order)
+        {
             return DataBaseContext.Database.Status.ToList().Exists(s =>
             s.Kanban == _kanban &&
-            s.name == nameBox.Text);
+            s.ordinal == order);
         }
     }
 }

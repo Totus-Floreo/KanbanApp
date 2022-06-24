@@ -59,8 +59,7 @@ namespace KanbanApp.Views
             {
                 _kanban.name = nameBox.Text;
             }
-
-            DataBaseContext.SaveDatabase();
+            
             this.DialogResult = DialogResult.OK;
         }
 

@@ -8,7 +8,6 @@ namespace KanbanApp.Model
 
     public partial class Status
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Status()
         {
             Tasks = new HashSet<Task>();
@@ -26,7 +25,6 @@ namespace KanbanApp.Model
 
         public virtual Kanban Kanban { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
     }
 }

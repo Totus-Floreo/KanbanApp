@@ -42,7 +42,7 @@
             this.flowKanbanPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lewdPanel = new System.Windows.Forms.Panel();
             this.statusAdd = new System.Windows.Forms.PictureBox();
-            this.toolAdd = new System.Windows.Forms.PictureBox();
+            this.showTools = new System.Windows.Forms.PictureBox();
             this.TaskAdd = new System.Windows.Forms.PictureBox();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kanbanDelete)).BeginInit();
@@ -51,7 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.lewdPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showTools)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaskAdd)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1332, 76);
+            this.panelTop.Size = new System.Drawing.Size(1334, 76);
             this.panelTop.TabIndex = 0;
             // 
             // kanbanEdit
@@ -156,25 +156,25 @@
             this.flowKanbanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowKanbanPanel.Location = new System.Drawing.Point(78, 76);
             this.flowKanbanPanel.Name = "flowKanbanPanel";
-            this.flowKanbanPanel.Size = new System.Drawing.Size(1254, 651);
+            this.flowKanbanPanel.Size = new System.Drawing.Size(1256, 535);
             this.flowKanbanPanel.TabIndex = 1;
             // 
             // lewdPanel
             // 
             this.lewdPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lewdPanel.Controls.Add(this.statusAdd);
-            this.lewdPanel.Controls.Add(this.toolAdd);
+            this.lewdPanel.Controls.Add(this.showTools);
             this.lewdPanel.Controls.Add(this.TaskAdd);
             this.lewdPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.lewdPanel.Location = new System.Drawing.Point(0, 76);
             this.lewdPanel.Name = "lewdPanel";
-            this.lewdPanel.Size = new System.Drawing.Size(78, 651);
+            this.lewdPanel.Size = new System.Drawing.Size(78, 535);
             this.lewdPanel.TabIndex = 2;
             // 
             // statusAdd
             // 
             this.statusAdd.Image = global::KanbanApp.Properties.Resources.status;
-            this.statusAdd.Location = new System.Drawing.Point(8, 137);
+            this.statusAdd.Location = new System.Drawing.Point(8, 5);
             this.statusAdd.Name = "statusAdd";
             this.statusAdd.Size = new System.Drawing.Size(62, 60);
             this.statusAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -182,21 +182,21 @@
             this.statusAdd.TabStop = false;
             this.statusAdd.Click += new System.EventHandler(this.statusAdd_Click);
             // 
-            // toolAdd
+            // showTools
             // 
-            this.toolAdd.Image = global::KanbanApp.Properties.Resources.tool;
-            this.toolAdd.Location = new System.Drawing.Point(8, 71);
-            this.toolAdd.Name = "toolAdd";
-            this.toolAdd.Size = new System.Drawing.Size(62, 60);
-            this.toolAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.toolAdd.TabIndex = 1;
-            this.toolAdd.TabStop = false;
-            this.toolAdd.Click += new System.EventHandler(this.toolAdd_Click);
+            this.showTools.Image = global::KanbanApp.Properties.Resources.tool;
+            this.showTools.Location = new System.Drawing.Point(8, 137);
+            this.showTools.Name = "showTools";
+            this.showTools.Size = new System.Drawing.Size(62, 60);
+            this.showTools.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.showTools.TabIndex = 1;
+            this.showTools.TabStop = false;
+            this.showTools.Click += new System.EventHandler(this.showTools_Click);
             // 
             // TaskAdd
             // 
             this.TaskAdd.Image = global::KanbanApp.Properties.Resources.taskadd;
-            this.TaskAdd.Location = new System.Drawing.Point(8, 5);
+            this.TaskAdd.Location = new System.Drawing.Point(8, 71);
             this.TaskAdd.Name = "TaskAdd";
             this.TaskAdd.Size = new System.Drawing.Size(62, 60);
             this.TaskAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -207,12 +207,14 @@
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1332, 727);
+            this.ClientSize = new System.Drawing.Size(1334, 611);
             this.Controls.Add(this.flowKanbanPanel);
             this.Controls.Add(this.lewdPanel);
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainForm";
             this.Text = "Канбан";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -224,7 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
             this.lewdPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.statusAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showTools)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaskAdd)).EndInit();
             this.ResumeLayout(false);
 
@@ -243,7 +245,7 @@
         private System.Windows.Forms.PictureBox kanbanDelete;
         private System.Windows.Forms.PictureBox kanbanAdd;
         private System.Windows.Forms.PictureBox statusAdd;
-        private System.Windows.Forms.PictureBox toolAdd;
+        private System.Windows.Forms.PictureBox showTools;
         private System.Windows.Forms.PictureBox TaskAdd;
         private System.Windows.Forms.BindingSource kanbanBindingSource;
     }

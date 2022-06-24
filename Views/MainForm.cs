@@ -8,7 +8,7 @@ namespace KanbanApp.Views
 {
     public partial class MainForm : Form
     {
-        List<Status> allStatuses = new List<Status>(DataBaseContext.Database.Status.ToList());
+        
         Kanban selectedKanban = new Kanban();
         public User user;
 
@@ -29,6 +29,8 @@ namespace KanbanApp.Views
             }
             else
             {
+                DataBaseContext.DatabaseSuccessfullySaved += UpdateData;
+
                 labelHello.Text = "Добрый день, " + user.fullname + "!";
                 UpdateComboBox();
                 UpdateData();
@@ -50,7 +52,11 @@ namespace KanbanApp.Views
                 return;
             }
 
-            List<Status> needStatuses = allStatuses.Where(s => s.Kanban == selectedKanban).OrderBy(s => s.ordinal).ThenBy(s => s.name).ToList();
+            List<Status> needStatuses = DataBaseContext.Database.Status.ToList()
+                .Where(s => s.Kanban == selectedKanban)
+                .OrderBy(s => s.ordinal)
+                .ThenBy(s => s.name)
+                .ToList();
 
             GenerateKanban(needStatuses);
         }
@@ -84,15 +90,9 @@ namespace KanbanApp.Views
 
             foreach(Status status in statuses)
             {
-                StatusColumn statusColumn = new StatusColumn();
-                statusColumn.GenerateStatusColumnData(status);
+                StatusColumn statusColumn = new StatusColumn(status);
                 flowKanbanPanel.Controls.Add(statusColumn);
             }
-        }
-
-        private void kanbanCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateData();
         }
 
         private void kanbanAdd_Click(object sender, EventArgs e)
@@ -101,8 +101,8 @@ namespace KanbanApp.Views
 
             if(form.ShowDialog() == DialogResult.OK)
             {
+                DataBaseContext.SaveDatabase();
                 UpdateComboBox();
-                UpdateData();
             }
         }
 
@@ -118,7 +118,6 @@ namespace KanbanApp.Views
             if (form.ShowDialog() == DialogResult.OK)
             {
                 UpdateComboBox();
-                UpdateData();
             }
         }
 
@@ -134,10 +133,26 @@ namespace KanbanApp.Views
 
             if(result == DialogResult.Yes)
             {
+                List<Task> tasks = selectedKanban.Tasks.ToList();
+                List<Tool> tools = selectedKanban.Tools.ToList();
+                List<Status> statuses = selectedKanban.Status.ToList();
+
+                foreach (Task task in tasks)
+                {
+                    DataBaseContext.Database.Tasks.Remove(task);
+                }
+                foreach (Tool tool in tools)
+                {
+                    DataBaseContext.Database.Tools.Remove(tool);
+                }
+                foreach (Status status in statuses)
+                {
+                    DataBaseContext.Database.Status.Remove(status);
+                }
+
                 DataBaseContext.Database.Kanbans.Remove(selectedKanban);
                 DataBaseContext.SaveDatabase();
                 UpdateComboBox();
-                UpdateData();
             }
         }
 
@@ -151,14 +166,13 @@ namespace KanbanApp.Views
 
             FormAddChangeStatus form = new FormAddChangeStatus(selectedKanban);
 
-            if (form.ShowDialog() == DialogResult.Yes)
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                UpdateComboBox();
-                UpdateData();
+                DataBaseContext.SaveDatabase();
             }
         }
 
-        private void toolAdd_Click(object sender, EventArgs e)
+        private void showTools_Click(object sender, EventArgs e)
         {
             if (selectedKanban == null)
             {
@@ -166,7 +180,9 @@ namespace KanbanApp.Views
                 return;
             }
 
-
+            FormTools form = new FormTools(selectedKanban);
+            form.ShowDialog();
+            DataBaseContext.SaveDatabase();
         }
 
         private void TaskAdd_Click(object sender, EventArgs e)
@@ -178,6 +194,12 @@ namespace KanbanApp.Views
             }
 
 
+        }
+
+        private void kanbanCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedKanban = (Kanban)kanbanCombo.SelectedItem;
+            UpdateData();
         }
     }
 }

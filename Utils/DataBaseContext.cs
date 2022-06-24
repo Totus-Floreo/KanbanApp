@@ -4,15 +4,19 @@ using System.Windows.Forms;
 
 namespace KanbanApp
 {
-    internal static class DataBaseContext
+    public static class DataBaseContext
     {
         public static ModelDB Database = new ModelDB();
+
+        public delegate void DatabaseSaved();
+        public static event DatabaseSaved DatabaseSuccessfullySaved;
 
         public static void SaveDatabase()
         {
             try
             {
                 Database.SaveChanges();
+                DatabaseSuccessfullySaved();
             }
             catch(Exception ex)
             {
