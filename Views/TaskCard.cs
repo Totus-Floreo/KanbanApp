@@ -25,5 +25,14 @@ namespace KanbanApp.Views
             labeltool.Text = task.Tool.name;
             Task = task;
         }
+
+        private void EditTaskCardData(object sender, EventArgs e)
+        {
+            FormAddEditTask form = new FormAddEditTask(Task.Kanban, Task);
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                DataBaseContext.SaveDatabase();
+            }
+        }
     }
 }

@@ -30,9 +30,9 @@
         {
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelStatus = new System.Windows.Forms.Panel();
+            this.statusBox = new System.Windows.Forms.Label();
             this.buttonChange = new System.Windows.Forms.PictureBox();
             this.buttonDelete = new System.Windows.Forms.PictureBox();
-            this.statusBox = new System.Windows.Forms.Label();
             this.panelStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonChange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonDelete)).BeginInit();
@@ -41,10 +41,10 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 32);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 43);
             this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(298, 566);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(298, 555);
             this.flowLayoutPanel.TabIndex = 0;
             // 
             // panelStatus
@@ -57,6 +57,15 @@
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Size = new System.Drawing.Size(298, 34);
             this.panelStatus.TabIndex = 2;
+            // 
+            // statusBox
+            // 
+            this.statusBox.AutoSize = true;
+            this.statusBox.Location = new System.Drawing.Point(3, 4);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(63, 25);
+            this.statusBox.TabIndex = 6;
+            this.statusBox.Text = "label1";
             // 
             // buttonChange
             // 
@@ -79,15 +88,6 @@
             this.buttonDelete.TabIndex = 5;
             this.buttonDelete.TabStop = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // statusBox
-            // 
-            this.statusBox.AutoSize = true;
-            this.statusBox.Location = new System.Drawing.Point(3, 4);
-            this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(63, 25);
-            this.statusBox.TabIndex = 6;
-            this.statusBox.Text = "label1";
             // 
             // StatusColumn
             // 

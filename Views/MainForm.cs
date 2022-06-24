@@ -192,8 +192,12 @@ namespace KanbanApp.Views
                 MessageBox.Show("Добавьте канбан!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
+            
+            FormAddEditTask form = new FormAddEditTask(selectedKanban);
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                DataBaseContext.SaveDatabase();
+            }
         }
 
         private void kanbanCombo_SelectedIndexChanged(object sender, EventArgs e)
