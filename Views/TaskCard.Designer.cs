@@ -37,12 +37,14 @@
             // labeltaskID
             // 
             this.labeltaskID.AutoSize = true;
+            this.labeltaskID.BackColor = System.Drawing.Color.Transparent;
             this.labeltaskID.Dock = System.Windows.Forms.DockStyle.Top;
             this.labeltaskID.Location = new System.Drawing.Point(0, 0);
             this.labeltaskID.Name = "labeltaskID";
             this.labeltaskID.Size = new System.Drawing.Size(90, 25);
             this.labeltaskID.TabIndex = 0;
             this.labeltaskID.Text = "task 9999";
+            this.labeltaskID.DoubleClick += new System.EventHandler(this.EditTaskCardData);
             // 
             // suplabeltool
             // 
@@ -56,21 +58,25 @@
             // labeltool
             // 
             this.labeltool.AutoSize = true;
+            this.labeltool.BackColor = System.Drawing.Color.Transparent;
             this.labeltool.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labeltool.Location = new System.Drawing.Point(0, 118);
             this.labeltool.Name = "labeltool";
             this.labeltool.Size = new System.Drawing.Size(82, 25);
             this.labeltool.TabIndex = 2;
             this.labeltool.Text = "tool one";
+            this.labeltool.DoubleClick += new System.EventHandler(this.EditTaskCardData);
             // 
             // labeltask
             // 
+            this.labeltask.BackColor = System.Drawing.Color.Transparent;
             this.labeltask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labeltask.Location = new System.Drawing.Point(0, 25);
             this.labeltask.Name = "labeltask";
             this.labeltask.Size = new System.Drawing.Size(143, 93);
             this.labeltask.TabIndex = 3;
             this.labeltask.Text = "create program";
+            this.labeltask.DoubleClick += new System.EventHandler(this.EditTaskCardData);
             // 
             // TaskCard
             // 
@@ -83,16 +89,16 @@
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F);
             this.Name = "TaskCard";
             this.Size = new System.Drawing.Size(143, 143);
+            this.DoubleClick += new System.EventHandler(this.EditTaskCardData);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labeltaskID;
         private System.Windows.Forms.Label suplabeltool;
-        private System.Windows.Forms.Label labeltool;
-        private System.Windows.Forms.Label labeltask;
+        public System.Windows.Forms.Label labeltaskID;
+        public System.Windows.Forms.Label labeltool;
+        public System.Windows.Forms.Label labeltask;
     }
 }

@@ -30,12 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
             this.panelTop = new System.Windows.Forms.Panel();
-            this.labelAuto = new System.Windows.Forms.Label();
             this.logoBox = new System.Windows.Forms.PictureBox();
+            this.labelAuto = new System.Windows.Forms.Label();
             this.loginBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.emailBox = new System.Windows.Forms.TextBox();
-            this.birthBox = new System.Windows.Forms.TextBox();
             this.fullnameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +42,8 @@
             this.buttonReg = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.bithdayPicker = new System.Windows.Forms.DateTimePicker();
+            this.emailBox = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.SuspendLayout();
@@ -59,15 +59,6 @@
             this.panelTop.Size = new System.Drawing.Size(584, 85);
             this.panelTop.TabIndex = 5;
             // 
-            // labelAuto
-            // 
-            this.labelAuto.AutoSize = true;
-            this.labelAuto.Location = new System.Drawing.Point(236, 29);
-            this.labelAuto.Name = "labelAuto";
-            this.labelAuto.Size = new System.Drawing.Size(128, 25);
-            this.labelAuto.TabIndex = 0;
-            this.labelAuto.Text = "Регистрация";
-            // 
             // logoBox
             // 
             this.logoBox.Dock = System.Windows.Forms.DockStyle.Left;
@@ -79,11 +70,21 @@
             this.logoBox.TabIndex = 1;
             this.logoBox.TabStop = false;
             // 
+            // labelAuto
+            // 
+            this.labelAuto.AutoSize = true;
+            this.labelAuto.Location = new System.Drawing.Point(236, 29);
+            this.labelAuto.Name = "labelAuto";
+            this.labelAuto.Size = new System.Drawing.Size(128, 25);
+            this.labelAuto.TabIndex = 0;
+            this.labelAuto.Text = "Регистрация";
+            // 
             // loginBox
             // 
             this.loginBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loginBox.Location = new System.Drawing.Point(197, 91);
+            this.loginBox.MaxLength = 50;
             this.loginBox.Name = "loginBox";
             this.loginBox.Size = new System.Drawing.Size(200, 33);
             this.loginBox.TabIndex = 2;
@@ -93,33 +94,17 @@
             this.passwordBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordBox.Location = new System.Drawing.Point(197, 130);
+            this.passwordBox.MaxLength = 50;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(200, 33);
             this.passwordBox.TabIndex = 6;
-            // 
-            // emailBox
-            // 
-            this.emailBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailBox.Location = new System.Drawing.Point(197, 169);
-            this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(200, 33);
-            this.emailBox.TabIndex = 7;
-            // 
-            // birthBox
-            // 
-            this.birthBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.birthBox.Location = new System.Drawing.Point(197, 208);
-            this.birthBox.Name = "birthBox";
-            this.birthBox.Size = new System.Drawing.Size(200, 33);
-            this.birthBox.TabIndex = 8;
             // 
             // fullnameBox
             // 
             this.fullnameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fullnameBox.Location = new System.Drawing.Point(197, 247);
+            this.fullnameBox.MaxLength = 150;
             this.fullnameBox.Name = "fullnameBox";
             this.fullnameBox.Size = new System.Drawing.Size(200, 33);
             this.fullnameBox.TabIndex = 9;
@@ -162,12 +147,13 @@
             // 
             // buttonReg
             // 
-            this.buttonReg.Location = new System.Drawing.Point(197, 304);
+            this.buttonReg.Location = new System.Drawing.Point(197, 298);
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Size = new System.Drawing.Size(200, 33);
             this.buttonReg.TabIndex = 14;
             this.buttonReg.Text = "Регистрация";
             this.buttonReg.UseVisualStyleBackColor = true;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // label5
             // 
@@ -180,18 +166,37 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(461, 316);
+            this.buttonCancel.Location = new System.Drawing.Point(461, 298);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(111, 33);
             this.buttonCancel.TabIndex = 16;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // bithdayPicker
+            // 
+            this.bithdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.bithdayPicker.Location = new System.Drawing.Point(197, 208);
+            this.bithdayPicker.Name = "bithdayPicker";
+            this.bithdayPicker.Size = new System.Drawing.Size(200, 33);
+            this.bithdayPicker.TabIndex = 18;
+            // 
+            // emailBox
+            // 
+            this.emailBox.Location = new System.Drawing.Point(197, 169);
+            this.emailBox.MaxLength = 50;
+            this.emailBox.Name = "emailBox";
+            this.emailBox.Size = new System.Drawing.Size(200, 33);
+            this.emailBox.TabIndex = 19;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(584, 343);
+            this.Controls.Add(this.emailBox);
+            this.Controls.Add(this.bithdayPicker);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonReg);
@@ -200,15 +205,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fullnameBox);
-            this.Controls.Add(this.birthBox);
-            this.Controls.Add(this.emailBox);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.loginBox);
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Registration";
             this.Text = "Регистрация";
             this.panelTop.ResumeLayout(false);
@@ -226,8 +229,6 @@
         private System.Windows.Forms.Label labelAuto;
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.TextBox emailBox;
-        private System.Windows.Forms.TextBox birthBox;
         private System.Windows.Forms.TextBox fullnameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -236,5 +237,7 @@
         private System.Windows.Forms.Button buttonReg;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.DateTimePicker bithdayPicker;
+        private System.Windows.Forms.TextBox emailBox;
     }
 }

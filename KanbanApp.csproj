@@ -70,6 +70,36 @@
     <Compile Include="Views\Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FormAddChangeKanban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAddChangeKanban.Designer.cs">
+      <DependentUpon>FormAddChangeKanban.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormAddChangeStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAddChangeStatus.Designer.cs">
+      <DependentUpon>FormAddChangeStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormAddChangeTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAddChangeTool.Designer.cs">
+      <DependentUpon>FormAddChangeTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormAddEditTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAddEditTask.Designer.cs">
+      <DependentUpon>FormAddEditTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormTools.Designer.cs">
+      <DependentUpon>FormTools.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +136,21 @@
     </Compile>
     <EmbeddedResource Include="Views\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAddChangeKanban.resx">
+      <DependentUpon>FormAddChangeKanban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAddChangeStatus.resx">
+      <DependentUpon>FormAddChangeStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAddChangeTool.resx">
+      <DependentUpon>FormAddChangeTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAddEditTask.resx">
+      <DependentUpon>FormAddEditTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormTools.resx">
+      <DependentUpon>FormTools.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -144,6 +189,10 @@
     <Content Include="Resources\add.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\change.bmp" />
+    <Content Include="Resources\change.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\cross.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -153,6 +202,7 @@
     <Content Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\script.sql" />
     <Content Include="Resources\status.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
