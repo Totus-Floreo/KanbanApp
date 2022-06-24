@@ -49,6 +49,7 @@
             this.comboBoxTool.DataSource = this.toolBindingSource;
             this.comboBoxTool.DisplayMember = "name";
             this.comboBoxTool.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTool.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTool.FormattingEnabled = true;
             this.comboBoxTool.Location = new System.Drawing.Point(151, 51);
             this.comboBoxTool.Name = "comboBoxTool";
@@ -65,6 +66,7 @@
             this.comboBoxStatus.DataSource = this.statusBindingSource;
             this.comboBoxStatus.DisplayMember = "name";
             this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStatus.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStatus.FormattingEnabled = true;
             this.comboBoxStatus.Location = new System.Drawing.Point(151, 90);
             this.comboBoxStatus.Name = "comboBoxStatus";

@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddChangeKanban));
             this.label1 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.nameBox = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -56,17 +56,6 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(20, 61);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(122, 33);
-            this.buttonSave.TabIndex = 14;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
             // nameBox
             // 
             this.nameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -77,6 +66,17 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(254, 33);
             this.nameBox.TabIndex = 13;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(20, 61);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(122, 33);
+            this.buttonSave.TabIndex = 14;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormAddChangeKanban
             // 
@@ -103,7 +103,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.Button buttonSave;
     }
 }

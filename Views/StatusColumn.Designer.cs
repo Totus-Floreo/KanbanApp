@@ -63,9 +63,9 @@
             this.statusBox.AutoSize = true;
             this.statusBox.Location = new System.Drawing.Point(3, 4);
             this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(63, 25);
+            this.statusBox.Size = new System.Drawing.Size(110, 25);
             this.statusBox.TabIndex = 6;
-            this.statusBox.Text = "label1";
+            this.statusBox.Text = "Состояние";
             // 
             // buttonChange
             // 

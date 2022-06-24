@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelTop = new System.Windows.Forms.Panel();
             this.kanbanEdit = new System.Windows.Forms.Button();
@@ -36,7 +35,6 @@
             this.kanbanAdd = new System.Windows.Forms.PictureBox();
             this.sublabelKanban = new System.Windows.Forms.Label();
             this.kanbanCombo = new System.Windows.Forms.ComboBox();
-            this.kanbanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelHello = new System.Windows.Forms.Label();
             this.logoBox = new System.Windows.Forms.PictureBox();
             this.flowKanbanPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,7 +45,6 @@
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kanbanDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kanbanAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kanbanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).BeginInit();
             this.lewdPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusAdd)).BeginInit();
@@ -114,10 +111,9 @@
             // 
             // kanbanCombo
             // 
-            this.kanbanCombo.DataSource = this.kanbanBindingSource;
-            this.kanbanCombo.DisplayMember = "name";
             this.kanbanCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kanbanCombo.Enabled = false;
+            this.kanbanCombo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kanbanCombo.FormattingEnabled = true;
             this.kanbanCombo.Location = new System.Drawing.Point(251, 40);
             this.kanbanCombo.Name = "kanbanCombo";
@@ -125,10 +121,6 @@
             this.kanbanCombo.TabIndex = 2;
             this.kanbanCombo.ValueMember = "kanbanID";
             this.kanbanCombo.SelectedIndexChanged += new System.EventHandler(this.kanbanCombo_SelectedIndexChanged);
-            // 
-            // kanbanBindingSource
-            // 
-            this.kanbanBindingSource.DataSource = typeof(KanbanApp.Model.Kanban);
             // 
             // labelHello
             // 
@@ -222,7 +214,6 @@
             this.panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kanbanDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kanbanAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kanbanBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoBox)).EndInit();
             this.lewdPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.statusAdd)).EndInit();
@@ -247,6 +238,5 @@
         private System.Windows.Forms.PictureBox statusAdd;
         private System.Windows.Forms.PictureBox showTools;
         private System.Windows.Forms.PictureBox TaskAdd;
-        private System.Windows.Forms.BindingSource kanbanBindingSource;
     }
 }
